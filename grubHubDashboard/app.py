@@ -50,7 +50,7 @@ def send():
         streetName = request.form["streetName"]
         city = request.form["city"]
         zip = request.form["zip"]
-        cancelled = request.form["cancelled"]
+        canceled = request.form["canceled"]
         popUp = request.form["popUp"]
         type = request.form["type"]
         lat = request.form["lat"]
@@ -71,7 +71,7 @@ def send():
             streetName = streetName,
             city = city,
             zip = zip,
-            cancelled = cancelled,
+            canceled = canceled,
             popUp = popUp,
             type = type,
             lat = lat,
