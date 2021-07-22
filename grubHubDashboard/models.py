@@ -1,6 +1,5 @@
 from .app import db
 
-
 class GrubHubDashboard(db.Model):
     __tablename__ = 'grubHubDashboard'
 
