@@ -1,7 +1,7 @@
 from .app import db
 
 class GrubHubDashboard(db.Model):
-    __tablename__ = 'grubHubDashboard'
+    __tablename__ = 'grubhubdashboard'
 
     id = db.Column(db.Integer, primary_key=True)
     date = db.Column(db.DateTime)
