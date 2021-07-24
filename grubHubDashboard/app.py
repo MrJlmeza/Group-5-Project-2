@@ -93,36 +93,36 @@ def grubHubDash():
                                GrubHubDashboard.total,
                                GrubHubDashboard.tip,
                                GrubHubDashboard.grubhub,
-                               GrubHubDashboard.timePay,
-                               GrubHubDashboard.mileagePay,
+                               GrubHubDashboard.timepay,
+                               GrubHubDashboard.mileagepay,
                                GrubHubDashboard.miles,
                                GrubHubDashboard.bonus,
-                               GrubHubDashboard.streetName,
+                               GrubHubDashboard.streetname,
                                GrubHubDashboard.city,
                                GrubHubDashboard.zip,
                                GrubHubDashboard.canceled,
-                               GrubHubDashboard.popUp,
+                               GrubHubDashboard.popup,
                                GrubHubDashboard.type,
                                GrubHubDashboard.lat,
                                GrubHubDashboard.long,
                                GrubHubDashboard.rating).all()
 
     grubHubDashboard_data = []
-    for establishment, total, tip, grubhub, timePay, mileagePay, miles, bonus, streetName, city, zip, canceled, popUp, type, lat, long, rating in results:
+    for establishment, total, tip, grubhub, timepay, mileagepay, miles, bonus, streetname, city, zip, canceled, popup, type, lat, long, rating in results:
         data_dict = {}
         data_dict["establishment"] = establishment
         data_dict["total"] = total
         data_dict["tip"] = tip
         data_dict["grubhub"] = grubhub
-        data_dict["timePay"] = timePay
-        data_dict["mileagePay"] = mileagePay
+        data_dict["timepay"] = timepay
+        data_dict["mileagepay"] = mileagepay
         data_dict["miles"] = miles
         data_dict["bonus"] = bonus
-        data_dict["streetName"] = streetName
+        data_dict["streetname"] = streetname
         data_dict["city"] = city
         data_dict["zip"] = zip
         data_dict["canceled"] = canceled
-        data_dict["popUp"] = popUp
+        data_dict["popup"] = popup
         data_dict["type"] = type
         data_dict["lat"] = lat
         data_dict["long"] = long
