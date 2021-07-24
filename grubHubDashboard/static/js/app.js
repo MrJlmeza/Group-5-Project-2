@@ -1,3 +1,9 @@
+// function unpack(rows, index) {
+//   return rows.map(function(row) {
+//     return row[index];
+//   });
+// }
+
 function buildDashboards() {
 
     /* get data route */
@@ -6,6 +12,8 @@ function buildDashboards() {
 
     console.log(response);
 
+    // var highPrices = unpack(response.establishment, 2);
+    // console.log(highPrices);
     
   });
 }
