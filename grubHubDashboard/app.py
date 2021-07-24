@@ -100,7 +100,7 @@ def grubHubDash():
                                GrubHubDashboard.streetName,
                                GrubHubDashboard.city,
                                GrubHubDashboard.zip,
-                               GrubHubDashboard.cancelled,
+                               GrubHubDashboard.canceled,
                                GrubHubDashboard.popUp,
                                GrubHubDashboard.type,
                                GrubHubDashboard.lat,
@@ -108,7 +108,7 @@ def grubHubDash():
                                GrubHubDashboard.rating).all()
 
     grubHubDashboard_data = []
-    for establishment, total, tip, grubhub, timePay, mileagePay, miles, bonus, streetName, city, zip, cancelled, popUp, type, lat, long, rating in results:
+    for establishment, total, tip, grubhub, timePay, mileagePay, miles, bonus, streetName, city, zip, canceled, popUp, type, lat, long, rating in results:
         data_dict = {}
         data_dict["establishment"] = establishment
         data_dict["total"] = total
@@ -121,7 +121,7 @@ def grubHubDash():
         data_dict["streetName"] = streetName
         data_dict["city"] = city
         data_dict["zip"] = zip
-        data_dict["cancelled"] = cancelled
+        data_dict["canceled"] = canceled
         data_dict["popUp"] = popUp
         data_dict["type"] = type
         data_dict["lat"] = lat

@@ -17,7 +17,7 @@ class GrubHubDashboard(db.Model):
     streetName = db.Column(db.String(150))
     city = db.Column(db.String(100))
     zip = db.Column(db.Integer)
-    cancelled = db.Column(db.Boolean)
+    canceled = db.Column(db.Boolean)
     popUp = db.Column(db.Boolean)
     type = db.Column(db.String(100))
     lat = db.Column(db.Float)
