@@ -1,4 +1,4 @@
-id,date,establisment,total,tip,grubhub,timePay,mileagePay,miles,bonus,acceptedAt,streetName,city,zip,canceled,popUp,type,lat,long,rating
+ï»¿id,date,establishment,total,tip,grubhub,timePay,mileagePay,miles,bonus,acceptedAt,streetName,city,zip,canceled,popUp,type,lat,long,rating
 1,7/2/2021,Shere E Punjab,11.14,3.18,7.96,3.55,2.53,11,1.88,11:31:00 AM,"""3319 301 Byers Dr #15""",Glen Mills,19342,0,0,Indian,39.88499,-75.52817,4
 2,7/4/2021,McDonald's,11.34,3.99,7.35,2.51,1.6,6.96,3.24,12:43:00 PM,1 Christy Dr,Concordville,19331,0,0,Fast Food,39.8822,-75.54521,1.5
 3,6/27/2021,Tsunami,11.83,5.43,6.4,3.58,1.82,7.91,1,4:22:00 PM,10 Market St,West Chester,19382,0,0,Asian,39.95963,-75.60473,4
@@ -195,8 +195,8 @@ id,date,establisment,total,tip,grubhub,timePay,mileagePay,miles,bonus,acceptedAt
 194,6/22/2021,Wawa,8.54,5.54,3,2.47,0.53,2.3,0,5:07:00 PM,706 E Gay St,West Chester,19380,0,0,Fast Food,39.96523,-75.59373,3
 195,6/22/2021,Wawa,6.98,3.31,3.67,2.55,1.12,4.87,0,12:32:00 PM,706 E Gay St,West Chester,19380,0,0,Fast Food,39.96523,-75.59373,3
 196,7/7/2021,Boston Market,13.19,7.12,6.07,4.12,1.95,8.48,0,12:27:00 PM,726 E Gay St,West Chester,19380,0,0,Fast Food,39.96523,-75.59373,3
-197,6/27/2021,Fiorello's Café,19.17,15,4.17,3.46,0.71,3.09,0,6:59:00 PM,730 E Gay St,West Chester,19380,0,0,Fast Food,39.96523,-75.59373,3
-198,6/24/2021,Fiorello's Café,13.43,9.66,3.77,3.16,0.61,2.65,0,6:53:00 PM,730 E Gay St,West Chester,19380,0,0,Fast Food,39.96523,-75.59373,3
+197,6/27/2021,Fiorello's CafÃ©,19.17,15,4.17,3.46,0.71,3.09,0,6:59:00 PM,730 E Gay St,West Chester,19380,0,0,Fast Food,39.96523,-75.59373,3
+198,6/24/2021,Fiorello's CafÃ©,13.43,9.66,3.77,3.16,0.61,2.65,0,6:53:00 PM,730 E Gay St,West Chester,19380,0,0,Fast Food,39.96523,-75.59373,3
 199,7/3/2021,Dunkin',6.29,2,4.29,2.58,0.71,3.09,1,12:13:00 PM,750 Miles Rd,West Chester,19380,1,0,American,39.96563,-75.59319,3.5
 200,7/8/2021,Jaco Juice,6.63,3.36,3.27,2.88,0.39,1.7,0,12:13:00 PM,8 W Gay St,West Chester,19380,0,0,Mexican,39.96043,-75.60552,4
 201,7/8/2021,Jaco Juice,6.59,3.93,2.66,1.66,1,4.35,0,12:13:00 PM,8 W Gay St,West Chester,19380,0,0,Mexican,39.96043,-75.60552,4
