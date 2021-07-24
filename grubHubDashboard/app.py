@@ -1,4 +1,5 @@
 # import necessary libraries
+import numpy as np
 import os
 from flask import (
     Flask,
@@ -88,8 +89,74 @@ def send():
 
 @app.route("/api/grubhHubDashboard")
 def grubHubDash():
-    grubHubDashboardResults = db.session.query(GrubHubDashboard.establishment, GrubHubDashboard.lat, GrubHubDashboard.long).all()
-    return jsonify(grubHubDashboardResults)
+    results = db.session.query(GrubHubDashboard.establishment, 
+                               GrubHubDashboard.total,
+                               GrubHubDashboard.tip,
+                               GrubHubDashboard.grubhub,
+                               GrubHubDashboard.timePay,
+                               GrubHubDashboard.mileagePay,
+                               GrubHubDashboard.miles,
+                               GrubHubDashboard.bonus,
+                               GrubHubDashboard.streetName,
+                               GrubHubDashboard.city,
+                               GrubHubDashboard.zip,
+                               GrubHubDashboard.cancelled,
+                               GrubHubDashboard.popUp,
+                               GrubHubDashboard.type,
+                               GrubHubDashboard.lat,
+                               GrubHubDashboard.long,
+                               GrubHubDashboard.rating).all()
+
+    grubHubDashboard_data = []
+    for establishment, total, tip, grubhub, timePay, mileagePay, miles, bonus, streetName, city, zip, cancelled, popUp, type, lat, long, rating in results:
+        data_dict = {}
+        data_dict["establishment"] = establishment
+        data_dict["total"] = total
+        data_dict["tip"] = tip
+        data_dict["grubhub"] = grubhub
+        data_dict["timePay"] = timePay
+        data_dict["mileagePay"] = mileagePay
+        data_dict["miles"] = miles
+        data_dict["bonus"] = bonus
+        data_dict["streetName"] = streetName
+        data_dict["city"] = city
+        data_dict["zip"] = zip
+        data_dict["cancelled"] = cancelled
+        data_dict["popUp"] = popUp
+        data_dict["type"] = type
+        data_dict["lat"] = lat
+        data_dict["long"] = long
+        data_dict["rating"] = rating
+        grubHubDashboard_data.append(data_dict)
+
+    return jsonify(grubHubDashboard_data)
+    
+    
+    # return jsonify(grubHubDashboardResults)
+    return grubHubDashboardResults
+    # results = db.session.query(GrubHubDashboard.establishment, GrubHubDashboard.lat, GrubHubDashboard.long).all()
+
+    # hover_text = [result[0] for result in results]
+    # lat = [result[1] for result in results]
+    # lon = [result[2] for result in results]
+
+    # grubHub_data = [{
+    #     "type": "scattergeo",
+    #     "locationmode": "USA-states",
+    #     "lat": lat,
+    #     "lon": lon,
+    #     "text": hover_text,
+    #     "hoverinfo": "text",
+    #     "marker": {
+    #         "size": 15,
+    #         "line": {
+    #             "color": "rgb(8,8,8)",
+    #             "width": 1
+    #         },
+    #     }
+    # }]
+
+    # return jsonify(grubHub_data)
 
 
 if __name__ == "__main__":
