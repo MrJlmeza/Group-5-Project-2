@@ -13,9 +13,19 @@ function buildSummarizedData() {
 
 }
 
+function buildMileageVsMilesCorrelation(){
+  const url = "/api/milessummarized"; //change api call to the right one as needed
+  d3.json(url).then(function(response) {
+    // console.log(response);
+    
+
+  });
+}
+
+
 function buildDashboards() {
   buildSummarizedData();
-  
+  buildMileageVsMilesCorrelation();
 };
 
 
