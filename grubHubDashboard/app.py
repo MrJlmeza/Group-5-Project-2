@@ -212,7 +212,7 @@ def getSummarizedMileageData():
         totalMiles = totalMiles + result.miles
         totalMileagePay = totalMileagePay + result.mileagepay
 
-    finaljson["totalMiles"] = totalMiles
+    finaljson["totalMiles"] = round(totalMiles, 2)
     finaljson["totalMileagePay"] = round(totalMileagePay, 2)
 
     return jsonify(finaljson)

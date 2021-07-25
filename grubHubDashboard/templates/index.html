@@ -28,7 +28,7 @@
                 <!-- Drawer toggle button-->
                 <button class="btn btn-lg btn-icon order-1 order-lg-0" id="drawerToggle" href="javascript:void(0);"><i class="material-icons">menu</i></button>
                 <!-- Navbar brand-->
-                <a class="navbar-brand me-auto" href="index.html"><div class="text-uppercase font-monospace">Vito's Grubhub Dashboard</div></a>
+                <a class="navbar-brand me-auto" href="#" onclick="return showMain();"><div class="text-uppercase font-monospace">Vito's Grubhub Dashboard</div></a>
                 <!-- Navbar items-->
                 <div class="d-flex align-items-center mx-3 me-lg-0">
                     <!-- Navbar-->
@@ -54,22 +54,22 @@
                             <!-- Drawer section heading (Interface)-->
                             <div class="drawer-menu-heading">Sections</div>
                             <!-- Drawer link (Fuel & Mileage Visualization)-->
-                            <a class="nav-link" href="miles_analysis.html">
+                            <a class="nav-link" href="#" onclick="return showMilesAnalysis();">
                                 <div class="nav-link-icon"><i class="material-icons">bar_chart</i></div>
                                 Mileage Visualization
                             </a>
                             <!-- Drawer link (Analysis & Insights)-->
-                            <a class="nav-link" href="analysis_and_insights.html">
+                            <a class="nav-link" href="#" onclick="return showAnalysisAndInsights();">
                                 <div class="nav-link-icon"><i class="material-icons">code</i></div>
                                 Analysis & Insights
                             </a>
                             <!-- Drawer link (Yelp Insights)-->
-                            <a class="nav-link" href="yelp_insights.html">
+                            <a class="nav-link" href="#" onclick="return showYelpInsights();">
                                 <div class="nav-link-icon"><i class="material-icons">widgets</i></div>
                                 Yelp Insights
                             </a>
                             <!-- Drawer link (Data Tables)-->
-                            <a class="nav-link" href="dataset.html">
+                            <a class="nav-link" href="#" onclick="return showDataSet();">
                                 <div class="nav-link-icon"><i class="material-icons">filter_alt</i></div>
                                 View Dataset
                             </a>
@@ -113,145 +113,294 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Colored status cards-->
-                        <div class="row gx-5">
-                            <div class="col-xxl-3 col-md-6 mb-5">
-                                <div class="card card-raised border-start border-primary border-4">
-                                    <div class="card-body px-4">
-                                        <div class="d-flex justify-content-between align-items-center mb-2">
-                                            <div class="me-2">
-                                                <div class="display-5">
-                                                    <div id="totalEarningsDiv">$</div>
+                        <div id="mainDiv">
+                             <!-- Colored status cards-->
+                            <div class="row gx-5">
+                                <div class="col-xxl-3 col-md-6 mb-5">
+                                    <div class="card card-raised border-start border-primary border-4">
+                                        <div class="card-body px-4">
+                                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                                <div class="me-2">
+                                                    <div class="display-5">
+                                                        <div id="totalEarningsDiv">$</div>
+                                                    </div>
+                                                    <div class="card-text">Total Earnings</div>
                                                 </div>
-                                                <div class="card-text">Total Earnings</div>
+                                                <div class="icon-circle bg-primary text-white"><i class="material-icons">paid</i></div>
                                             </div>
-                                            <div class="icon-circle bg-primary text-white"><i class="material-icons">paid</i></div>
+                                            
                                         </div>
-                                        
+                                    </div>
+                                </div>
+                                <div class="col-xxl-3 col-md-6 mb-5">
+                                    <div class="card card-raised border-start border-warning border-4">
+                                        <div class="card-body px-4">
+                                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                                <div class="me-2">
+                                                    <div class="display-5">
+                                                        <div id="totalDeliveriesDiv"></div>
+                                                    </div>
+                                                    <div class="card-text">Total Deliveries</div>
+                                                </div>
+                                                <div class="icon-circle bg-warning text-white"><i class="material-icons">verified</i></div>
+                                            </div>
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xxl-3 col-md-6 mb-5">
+                                    <div class="card card-raised border-start border-secondary border-4">
+                                        <div class="card-body px-4">
+                                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                                <div class="me-2">
+                                                    <div class="display-5">
+                                                        <div id="totalEstablishmentsDiv"></div>
+                                                    </div>
+                                                    <div class="card-text">Total Establishments</div>
+                                                </div>
+                                                <div class="icon-circle bg-secondary text-white"><i class="material-icons">storefront</i></div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xxl-3 col-md-6 mb-5">
+                                    <div class="card card-raised border-start border-info border-4">
+                                        <div class="card-body px-4">
+                                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                                <div class="me-2">
+                                                    <div class="display-5">
+                                                        <div id="totalTipsDiv">$</div>
+                                                    </div>
+                                                    <div class="card-text">Total Tips</div>
+                                                </div>
+                                                <div class="icon-circle bg-info text-white"><i class="material-icons">paid</i></div>
+                                            </div>
+                                            
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xxl-3 col-md-6 mb-5">
-                                <div class="card card-raised border-start border-warning border-4">
-                                    <div class="card-body px-4">
-                                        <div class="d-flex justify-content-between align-items-center mb-2">
-                                            <div class="me-2">
-                                                <div class="display-5">
-                                                    <div id="totalDeliveriesDiv"></div>
+                            <div class="row gx-5">
+                                <!-- ESTABLISHMENTS VS EARNINGS-->
+                                <div class="col-lg-8 mb-5">
+                                    <div class="card card-raised h-100">
+                                        <div class="card-header bg-transparent px-4">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="me-4">
+                                                    <h2 class="card-title mb-0">Earnings by Restaurants</h2>
                                                 </div>
-                                                <div class="card-text">Total Deliveries</div>
                                             </div>
-                                            <div class="icon-circle bg-warning text-white"><i class="material-icons">verified</i></div>
                                         </div>
-                                       
+                                        <div class="card-body p-4">
+                                            <div class="row gx-4">
+                                                <div class="col-12 col-xxl-10">
+                                                    <!-- <canvas id="dashboardBarChart"></canvas> -->
+                                                    <div id="establishmentsEarningsBar">
+                                                        <!-- PLOTLY CHART HERE - ESTABLISHMENTS vs. EARNINGS -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-xxl-3 col-md-6 mb-5">
-                                <div class="card card-raised border-start border-secondary border-4">
-                                    <div class="card-body px-4">
-                                        <div class="d-flex justify-content-between align-items-center mb-2">
-                                            <div class="me-2">
-                                                <div class="display-5">
-                                                    <div id="totalEstablishmentsDiv"></div>
+                                <!-- Segments pie chart example-->
+                                <div class="col-lg-4 mb-5">
+                                    <div class="card card-raised h-100">
+                                        <div class="card-header bg-transparent px-4">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="me-4">
+                                                    <h2 class="card-title mb-0">Establishments by Type</h2>
                                                 </div>
-                                                <div class="card-text">Total Establishments</div>
-                                            </div>
-                                            <div class="icon-circle bg-secondary text-white"><i class="material-icons">storefront</i></div>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xxl-3 col-md-6 mb-5">
-                                <div class="card card-raised border-start border-info border-4">
-                                    <div class="card-body px-4">
-                                        <div class="d-flex justify-content-between align-items-center mb-2">
-                                            <div class="me-2">
-                                                <div class="display-5">
-                                                    <div id="totalTipsDiv">$</div>
-                                                </div>
-                                                <div class="card-text">Total Tips</div>
-                                            </div>
-                                            <div class="icon-circle bg-info text-white"><i class="material-icons">paid</i></div>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row gx-5">
-                            <!-- ESTABLISHMENTS VS EARNINGS-->
-                            <div class="col-lg-8 mb-5">
-                                <div class="card card-raised h-100">
-                                    <div class="card-header bg-transparent px-4">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="me-4">
-                                                <h2 class="card-title mb-0">Earnings by Restaurants</h2>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="card-body p-4">
-                                        <div class="row gx-4">
-                                            <div class="col-12 col-xxl-10">
-                                                <!-- <canvas id="dashboardBarChart"></canvas> -->
-                                                <div id="establishmentsEarningsBar">
+                                        <div class="card-body p-4">
+                                            <div class="d-flex h-100 w-100 align-items-center justify-content-center">
+                                                <div class="pieChart">
                                                     <!-- PLOTLY CHART HERE - ESTABLISHMENTS vs. EARNINGS -->
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card-footer bg-transparent position-relative ripple-gray">
-                                       
-                                    </div>
                                 </div>
                             </div>
-                            <!-- Segments pie chart example-->
-                            <div class="col-lg-4 mb-5">
-                                <div class="card card-raised h-100">
-                                    <div class="card-header bg-transparent px-4">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="me-4">
-                                                <h2 class="card-title mb-0">Establishments by Type</h2>
+                            
+                            <div class="row gx-5">
+                                <!-- Charts for Yelp Breakdowns-->
+                                <div class="col-lg-12 mb-5">
+                                    <div class="card card-raised h-100">
+                                        <div class="card-header bg-transparent px-4">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="me-4">
+                                                    <h2 class="card-title mb-0">Establishments Map</h2>
+                                                </div>
                                             </div>
-                                    </div>
-                                    <div class="card-body p-4">
-                                        <div class="d-flex h-100 w-100 align-items-center justify-content-center">
-                                            <div class="pieChart">
-                                                <!-- PLOTLY CHART HERE - ESTABLISHMENTS vs. EARNINGS -->
+                                        </div>
+                                        <div class="card-body p-4">
+                                            <div id="EstablishmentsMap">
+                                                <!-- ADD MAP HERE-->
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card-footer bg-transparent position-relative ripple-gray">
-                                        
+                                </div>
+                            </div>
+                        </div>
+                       
+                        <div id="mileageAnalysisDiv">
+                            <div class="row gx-5">
+                                <div class="col-xxl-3 col-md-6 mb-5">
+                                    <div class="card card-raised border-start border-primary border-4">
+                                        <div class="card-body px-4">
+                                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                                <div class="me-2">
+                                                    <div class="display-5">
+                                                        <div id="totalMilesDiv">$</div>
+                                                    </div>
+                                                    <div class="card-text">Total Miles</div>
+                                                </div>
+                                                <div class="icon-circle bg-primary text-white"><i class="material-icons">download</i></div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xxl-3 col-md-6 mb-5">
+                                    <div class="card card-raised border-start border-warning border-4">
+                                        <div class="card-body px-4">
+                                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                                <div class="me-2">
+                                                    <div class="display-5">
+                                                        <div id="totalMileagePayDiv">$</div>
+                                                    </div>
+                                                    <div class="card-text">Total Mileage Pay</div>
+                                                </div>
+                                                <div class="icon-circle bg-warning text-white"><i class="material-icons">storefront</i></div>
+                                            </div>
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="row gx-5">
+                                <!-- Charts for Yelp Breakdowns-->
+                                <div class="col-lg-12 mb-5">
+                                    <div class="card card-raised h-100">
+                                        <div class="card-header bg-transparent px-4">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="me-4">
+                                                    <h2 class="card-title mb-0">Total Earnings vs. Ratings</h2>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body p-4">
+                                            <div id="EarningsRatingsChart">
+                                                <!-- ADD PLOTLY CHART HERE-->
+                                            </div>
+                                        </div>
+                                        <div class="card-footer bg-transparent position-relative ripple-gray">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row gx-5">
+                                <!-- Charts for Yelp Breakdowns-->
+                                <div class="col-lg-12 mb-5">
+                                    <div class="card card-raised h-100">
+                                        <div class="card-header bg-transparent px-4">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="me-4">
+                                                    <h2 class="card-title mb-0">Total Earnings vs. Type</h2>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body p-4">
+                                            <div id="EarningsRatingsChart">
+                                                <!-- ADD PLOTLY CHART HERE-->
+                                            </div>
+                                        </div>
+                                        <div class="card-footer bg-transparent position-relative ripple-gray">
+                                            
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         
-                        <div class="row gx-5">
-                            <!-- Charts for Yelp Breakdowns-->
-                            <div class="col-lg-12 mb-5">
-                                <div class="card card-raised h-100">
-                                    <div class="card-header bg-transparent px-4">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="me-4">
-                                                <h2 class="card-title mb-0">Establishments Map</h2>
+                        <div id="analysisAndInsightsDiv">
+                            <!-- Vito-->
+                            <!-- Vito-->
+                            <!-- Vito-->
+                            <!-- Vito-->
+                            <!-- Vito-->
+                            <!-- Vito-->
+                            <!-- Vito-->
+                            <div id="analysis">
+                                Add analysis here
+                            </div>
+                        </div>
+                    
+                        <div id="yelpInsightsDiv">
+                            <div class="row gx-5">
+                                <!-- Charts for Yelp Breakdowns-->
+                                <div class="col-lg-12 mb-5">
+                                    <div class="card card-raised h-100">
+                                        <div class="card-header bg-transparent px-4">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="me-4">
+                                                    <h2 class="card-title mb-0">Total Earnings vs. Ratings</h2>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="card-body p-4">
-                                        <div id="EstablishmentsMap">
-                                            <!-- ADD MAP HERE-->
+                                        <div class="card-body p-4">
+                                            <div id="EarningsRatingsChart">
+                                                <!-- ADD PLOTLY CHART HERE-->
+                                            </div>
+                                        </div>
+                                        <div class="card-footer bg-transparent position-relative ripple-gray">
+                                            
                                         </div>
                                     </div>
-                                    <div class="card-footer bg-transparent position-relative ripple-gray">
-                                        
+                                </div>
+                            </div>
+                            <div class="row gx-5">
+                                <!-- Charts for Yelp Breakdowns-->
+                                <div class="col-lg-12 mb-5">
+                                    <div class="card card-raised h-100">
+                                        <div class="card-header bg-transparent px-4">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="me-4">
+                                                    <h2 class="card-title mb-0">Total Earnings vs. Type</h2>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body p-4">
+                                            <div id="EarningsRatingsChart">
+                                                <!-- ADD PLOTLY CHART HERE-->
+                                            </div>
+                                        </div>
+                                        <div class="card-footer bg-transparent position-relative ripple-gray">
+                                            
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    
+
+                        <div id="viewDatasetDiv">
+                            <!-- Angela-->
+                            <!-- Angela-->
+                            <!-- Angela-->
+                            <!-- Angela-->
+                            <!-- Angela-->
+                            <!-- Angela-->
+                            <!-- Angela-->
+                            <div id="dataset">
+                                add dataset table here
+                            </div>
+                        </div>
+
                     </div>
                 </main>
                 <!-- Footer-->
@@ -271,6 +420,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
         <!-- <script src="{{ url_for('static', filename='js/app.js') }}"></script> -->
         <script src="../static/js/app.js"></script>
+        <script src="../static/js/miles.js"></script>
         <!-- Load Bootstrap JS bundle-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <!-- Load global scripts-->

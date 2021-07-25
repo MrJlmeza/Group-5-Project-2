@@ -1,3 +1,56 @@
+function hide (elements) {
+  elements = elements.length ? elements : [elements];
+  for (var index = 0; index < elements.length; index++) {
+    elements[index].style.display = 'none';
+  }
+}
+
+function show (elements, specifiedDisplay) {
+  elements = elements.length ? elements : [elements];
+  for (var index = 0; index < elements.length; index++) {
+    elements[index].style.display = specifiedDisplay || 'block';
+  }
+}
+function showMain(){
+  show(document.getElementById('mainDiv'));
+  hide(document.getElementById('mileageAnalysisDiv'));
+  hide(document.getElementById('analysisAndInsightsDiv'));
+  hide(document.getElementById('yelpInsightsDiv'));
+  hide(document.getElementById('viewDatasetDiv'));
+}
+
+function showMilesAnalysis() {
+  hide(document.getElementById('mainDiv'));
+  show(document.getElementById('mileageAnalysisDiv'));
+  hide(document.getElementById('analysisAndInsightsDiv'));
+  hide(document.getElementById('yelpInsightsDiv'));
+  hide(document.getElementById('viewDatasetDiv'));
+}
+
+function showAnalysisAndInsights() {
+  hide(document.getElementById('mainDiv'));
+  hide(document.getElementById('mileageAnalysisDiv'));
+  show(document.getElementById('analysisAndInsightsDiv'));
+  hide(document.getElementById('yelpInsightsDiv'));
+  hide(document.getElementById('viewDatasetDiv'));
+}
+
+function showYelpInsights() {
+  hide(document.getElementById('mainDiv'));
+  hide(document.getElementById('mileageAnalysisDiv'));
+  hide(document.getElementById('analysisAndInsightsDiv'));
+  show(document.getElementById('yelpInsightsDiv'));
+  hide(document.getElementById('viewDatasetDiv'));
+}
+
+function showDataSet() {
+  hide(document.getElementById('mainDiv'));
+  hide(document.getElementById('mileageAnalysisDiv'));
+  hide(document.getElementById('analysisAndInsightsDiv'));
+  hide(document.getElementById('yelpInsightsDiv'));
+  show(document.getElementById('viewDatasetDiv'));
+}
+
 
 function buildSummarizedData() {
   const url = "/api/summarized";
@@ -109,7 +162,7 @@ function buildDashboards() {
   }
 )};
 
-
+showMain();
 buildDashboards();
 
 
