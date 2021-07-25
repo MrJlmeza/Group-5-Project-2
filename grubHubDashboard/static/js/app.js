@@ -75,7 +75,7 @@ function buildSummarizedData() {
       valueList.push(response.typeCount[key]);
       labelsList.push(key);
     });
-    
+
     var trace1 = {
       labels: labelsList,
       values: valueList,
@@ -100,29 +100,17 @@ function buildBarChart() {
     // console.log(response);
     var establishmentList = [];
     var totalList = [];
-    var typeList = [];
-    var ratingList = [];
 
     for (var i = 0; i < 5; i++) {
       establishmentList.push(response[i]["establishment"]);
       totalList.push(response[i]["total"]);
-      typeList.push(response[i]["type"]);
-      ratingList.push(response[i]["rating"]);
     }
-
-    // var data = [
-    //   {
-    //     x: ['giraffes', 'orangutans', 'monkeys'],
-    //     y: [20, 14, 23],
-    //     type: 'bar'
-    //   }
-    // ];
 
     var trace1 = {
       x: establishmentList,
       y: totalList,
       type: 'bar',
-      text: typeList,
+      text: establishmentList,
       marker: {
         color: 'rgb(142,124,195)'
       }
