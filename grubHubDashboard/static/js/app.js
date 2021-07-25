@@ -103,7 +103,7 @@ function buildBarChart() {
 
     for (var i = 0; i < 5; i++) {
       establishmentList.push(response[i]["establishment"]);
-      totalList.push(response[i]["total"]);
+      totalList.push(response[i]["totalSorted"]);
     }
 
     var trace1 = {
