@@ -75,6 +75,7 @@ function buildSummarizedData() {
       valueList.push(response.typeCount[key]);
       labelsList.push(key);
     });
+    
     var trace1 = {
       labels: labelsList,
       values: valueList,
@@ -83,11 +84,11 @@ function buildSummarizedData() {
 
     var data = [trace1];
 
-    var layout = {
-      title: "'Bar' Chart",
-    };
+    // var layout = {
+    //   title: "'Bar' Chart",
+    // };
 
-    Plotly.newPlot("pieChart", data, layout, {responsive: true});
+    Plotly.newPlot("pieChart", data, {responsive: true});
 
   });
 
