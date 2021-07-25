@@ -67,45 +67,124 @@ function buildSummarizedData() {
 
     var totalTipsDiv = document.getElementById('totalTipsDiv');
     totalTipsDiv.innerHTML += response.totalTips;
+    console.log( response.typeCount);
+
+    var valueList = [];
+    var labelsList = [];
+    Object.keys(response.typeCount).forEach(function(key) {
+      valueList.push(response.typeCount[key]);
+      labelsList.push(key);
+    });
+    var trace1 = {
+      labels: labelsList,
+      values: valueList,
+      type: 'pie'
+    };
+
+    var data = [trace1];
+
+    var layout = {
+      title: "'Bar' Chart",
+    };
+
+    Plotly.newPlot("pieChart", data, layout, {responsive: true});
 
   });
 
 }
 
+function buildBarChart() {
+  const url = "/api/bar";
+  d3.json(url).then(function(response) {
+    // console.log(response);
+    var establishmentList = [];
+    var totalList = [];
+    var typeList = [];
+    var ratingList = [];
+
+    for (var i = 0; i < 5; i++) {
+      establishmentList.push(response[i]["establishment"]);
+      totalList.push(response[i]["total"]);
+      typeList.push(response[i]["type"]);
+      ratingList.push(response[i]["rating"]);
+    }
+
+    // var data = [
+    //   {
+    //     x: ['giraffes', 'orangutans', 'monkeys'],
+    //     y: [20, 14, 23],
+    //     type: 'bar'
+    //   }
+    // ];
+
+    var trace1 = {
+      x: establishmentList,
+      y: totalList,
+      type: 'bar',
+      text: typeList,
+      marker: {
+        color: 'rgb(142,124,195)'
+      }
+    };
+    
+    var data = [trace1];
+    
+    var layout = {
+      // title: 'Number of Graphs Made this Week',
+      font:{
+        family: 'Raleway, sans-serif'
+      },
+      showlegend: false,
+      xaxis: {
+        tickangle: -45
+      },
+      yaxis: {
+        zeroline: false,
+        gridwidth: 2
+      },
+      bargap :0.05
+    };
+    
+    Plotly.newPlot('establishmentsEarningsBar', data, layout, {responsive: true});
+
+  })
+
+}
 function buildDashboards() {
   
   buildSummarizedData();
+  buildBarChart();
     /* get data route */
   const url = "/api/grubhHubDashboard";
   d3.json(url).then(function(response) {
 
-    console.log(response);
-    var establishments = response.map(d =>  d.establishment);
-    var earnings = response.map(d => d.total);
-    var lats = response.map(d => d.lat);
-    var longs = response.map(d => d.long);
+    // console.log(response);
+    // var establishments = response.map(d =>  d.establishment);
+    // var earnings = response.map(d => d.total);
+    // var lats = response.map(d => d.lat);
+    // var longs = response.map(d => d.long);
 
-    // console.log(establishments);
-    // console.log(lats);
-    // console.log(longs);
-    // console.log(earnings);
+    // // console.log(establishments);
+    // // console.log(lats);
+    // // console.log(longs);
+    // // console.log(earnings);
 
-    var trace = {
-      x: establishments,
-      y: earnings,
-      type: "bar"
-    };
-    // Create the data array for our plot
-    var data = [trace];
+    // var trace = {
+    //   x: establishments,
+    //   y: earnings,
+    //   type: "bar"
+    // };
+    // // Create the data array for our plot
+    // var data = [trace];
 
-    // Define the plot layout
-    var layout = {
-      xaxis: { title: "Establishments" },
-      yaxis: { title: "Total Earned"}
-    };
+    // // Define the plot layout
+    // var layout = {
+    //   xaxis: { title: "Establishments" },
+    //   yaxis: { title: "Total Earned"}
+    // };
 
-    // Plot the chart to a div tag with id "bar-plot"
-    Plotly.newPlot("establishmentsEarningsBar", data, layout, {responsive: true});
+    // // Plot the chart to a div tag with id "bar-plot"
+    // Plotly.newPlot("establishmentsEarningsBar", data, layout, {responsive: true});
 
     ///  MAP   //////////////////////////////////////////////
     var map = L.map('EstablishmentsMap', {scrollWheelZoom:false}).setView([39.96366,-75.59671], 11);
