@@ -233,8 +233,5 @@ def getDataForBarChart():
 
     return jsonify(sorted(grubHubDashboard_data, key = lambda i: i["total"],reverse=True))
 
-
-
-
 if __name__ == "__main__":
     app.run()
