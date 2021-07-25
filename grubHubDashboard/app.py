@@ -18,6 +18,8 @@ app = Flask(__name__)
 #################################################
 
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import func
+
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '') or "sqlite:///db.sqlite"
 
 # Remove tracking modifications
@@ -108,13 +110,7 @@ def grubHubDash():
                                GrubHubDashboard.rating).all()
 
     grubHubDashboard_data = []
-    totalEarnings = 0
-    totalDeliveries = 0
-    establishmentList = []
-    totalEstablishments = 0
-    totalTips = 0
-
-
+   
     for establishment, total, tip, grubhub, timepay, mileagepay, miles, bonus, streetname, city, zip, canceled, popup, type, lat, long, rating in results:
         data_dict = {}
         data_dict["establishment"] = establishment
@@ -164,6 +160,7 @@ def getSummarizedData():
     establishmentList = []
     totalEstablishments = 0
     totalTips = 0
+    typeList = []
     finaljson = {}
 
     for result in results:
@@ -171,6 +168,9 @@ def getSummarizedData():
         totalDeliveries = totalDeliveries + 1
         totalEarnings = totalEarnings + result.total
         totalTips = totalTips + result.tip
+        typeList.append(result.type)
+
+    typeCount = {x:typeList.count(x) for x in typeList}
 
     mySet = set(establishmentList)
     my_new_list = list(mySet)
@@ -180,6 +180,7 @@ def getSummarizedData():
     finaljson["totalDeliveries"] = totalDeliveries
     finaljson["totalTips"] = round(totalTips, 2)
     finaljson["totalEstablishments"] = totalEstablishments
+    finaljson["typeCount"] = typeCount
 
     return jsonify(finaljson)
 
@@ -216,6 +217,23 @@ def getSummarizedMileageData():
     finaljson["totalMileagePay"] = round(totalMileagePay, 2)
 
     return jsonify(finaljson)
+
+@app.route("/api/bar")
+def getDataForBarChart():
+    results = db.session.query(GrubHubDashboard.establishment, func.sum(GrubHubDashboard.total), GrubHubDashboard.type, GrubHubDashboard.rating).group_by(GrubHubDashboard.establishment).order_by((GrubHubDashboard.total).desc()).all()
+    grubHubDashboard_data = [] 
+
+    for establishment, total, type, rating in results:
+        data_dict = {}
+        data_dict["establishment"] = establishment
+        data_dict["total"] = round(total, 2)
+        data_dict["type"] = type
+        data_dict["rating"] = rating
+        grubHubDashboard_data.append(data_dict)
+
+    return jsonify(sorted(grubHubDashboard_data, key = lambda i: i["total"],reverse=True))
+
+
 
 
 if __name__ == "__main__":
