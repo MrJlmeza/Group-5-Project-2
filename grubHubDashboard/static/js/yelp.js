@@ -1,15 +1,15 @@
 
 function buildYelpEarningsRatingsChart() {
-  // const url = "/api/milessummarized";
-  // d3.json(url).then(function(response) {
-  //   // console.log(response);
-  //   var totalMilesDiv = document.getElementById('totalMilesDiv');
-  //   totalMilesDiv.innerHTML += response.totalMiles;
+  const url = "/api/yelpearningsratings";
+  d3.json(url).then(function(response) {
+    console.log(response);
+    // var totalMilesDiv = document.getElementById('totalMilesDiv');
+    // totalMilesDiv.innerHTML += response.totalMiles;
 
-  //   var totalMileagePayDiv = document.getElementById('totalMileagePayDiv');
-  //   totalMileagePayDiv.innerHTML += response.totalMileagePay;
+    // var totalMileagePayDiv = document.getElementById('totalMileagePayDiv');
+    // totalMileagePayDiv.innerHTML += response.totalMileagePay;
 
-  // });
+  });
 
 }
 

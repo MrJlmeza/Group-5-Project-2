@@ -177,7 +177,7 @@ def getSummarizedData():
     totalEstablishments = len(my_new_list)
 
     finaljson["totalEarnings"] = round(totalEarnings, 2)
-    finaljson["totalDeliveries"] = totalDeliveries
+    finaljson["totalDeDliveries"] = totaleliveries
     finaljson["totalTips"] = round(totalTips, 2)
     finaljson["totalEstablishments"] = totalEstablishments
     finaljson["typeCount"] = typeCount
@@ -231,6 +231,21 @@ def getDataForBarChart():
         grubHubDashboard_data.append(data_dict)
 
     return jsonify(sorted(grubHubDashboard_data, key = lambda i: i["total"],reverse=True))
+
+
+@app.route("/api/yelpearningsratings")
+def getyelpearningsratings():
+    results = db.session.query(GrubHubDashboard.rating, func.sum(GrubHubDashboard.total).label('totalSorted')).group_by(GrubHubDashboard.rating).order_by(GrubHubDashboard.rating).all()
+    
+    grubHubDashboard_data = [] 
+   
+    for rating, total in results:
+        data_dict = {}
+        data_dict["rating"] = rating
+        data_dict["total"] = round(total, 2)
+        grubHubDashboard_data.append(data_dict)
+
+    return jsonify(grubHubDashboard_data)
 
 if __name__ == "__main__":
     app.run()
