@@ -224,12 +224,10 @@ def getDataForBarChart():
     # results = db.session.query(GrubHubDashboard.establishment, GrubHubDashboard.total, GrubHubDashboard.type, GrubHubDashboard.rating).all()
     grubHubDashboard_data = [] 
 
-    for establishment, total, type, rating in results:
+    for establishment, total in results:
         data_dict = {}
         data_dict["establishment"] = establishment
         data_dict["total"] = round(total, 2)
-        data_dict["type"] = type
-        data_dict["rating"] = rating
         grubHubDashboard_data.append(data_dict)
 
     return jsonify(sorted(grubHubDashboard_data, key = lambda i: i["total"],reverse=True))

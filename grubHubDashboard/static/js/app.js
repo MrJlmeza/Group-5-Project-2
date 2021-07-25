@@ -55,7 +55,7 @@ function showDataSet() {
 function buildSummarizedData() {
   const url = "/api/summarized";
   d3.json(url).then(function(response) {
-    console.log(response);
+    // console.log(response);
     var totalEarningsDiv = document.getElementById('totalEarningsDiv');
     totalEarningsDiv.innerHTML += response.totalEarnings;
 
@@ -67,7 +67,7 @@ function buildSummarizedData() {
 
     var totalTipsDiv = document.getElementById('totalTipsDiv');
     totalTipsDiv.innerHTML += response.totalTips;
-    console.log( response.typeCount);
+    // console.log( response.typeCount);
 
     var valueList = [];
     var labelsList = [];
@@ -100,17 +100,16 @@ function buildBarChart() {
     // console.log(response);
     var establishmentList = [];
     var totalList = [];
-
+    // console.log(response);
     for (var i = 0; i < 5; i++) {
       establishmentList.push(response[i]["establishment"]);
-      totalList.push(response[i]["totalSorted"]);
+      totalList.push(response[i]["total"]);
     }
-
+    console.log(totalList);
     var trace1 = {
       x: establishmentList,
       y: totalList,
       type: 'bar',
-      text: establishmentList,
       marker: {
         color: 'rgb(142,124,195)'
       }
