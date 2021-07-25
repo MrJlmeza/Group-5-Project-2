@@ -105,7 +105,6 @@ function buildBarChart() {
       establishmentList.push(response[i]["establishment"]);
       totalList.push(response[i]["total"]);
     }
-    console.log(totalList);
     var trace1 = {
       x: establishmentList,
       y: totalList,
@@ -138,6 +137,7 @@ function buildBarChart() {
   })
 
 }
+
 function buildDashboards() {
   
   buildSummarizedData();
