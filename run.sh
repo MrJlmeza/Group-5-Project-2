@@ -1,1 +1,0 @@
-FLASK_APP=grubHubDashboard/app.py flask run
