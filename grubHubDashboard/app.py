@@ -220,7 +220,7 @@ def getSummarizedMileageData():
 
 @app.route("/api/bar")
 def getDataForBarChart():
-    results = db.session.query(GrubHubDashboard.establishment, func.sum(GrubHubDashboard.total)).group_by(GrubHubDashboard.establishment).order_by((GrubHubDashboard.total).desc()).all()
+    results = db.session.query(GrubHubDashboard.establishment, func.sum(GrubHubDashboard.total).label('totalSorted')).group_by(GrubHubDashboard.establishment).order_by(('totalSorted').desc()).all()
     # results = db.session.query(GrubHubDashboard.establishment, GrubHubDashboard.total, GrubHubDashboard.type, GrubHubDashboard.rating).all()
     grubHubDashboard_data = [] 
 
