@@ -159,10 +159,10 @@ function buildDashboards() {
   d3.json(url).then(function(response) {
 
     // console.log(response);
-    // var establishments = response.map(d =>  d.establishment);
-    // var earnings = response.map(d => d.total);
-    // var lats = response.map(d => d.lat);
-    // var longs = response.map(d => d.long);
+    var establishments = response.map(d =>  d.establishment);
+    var earnings = response.map(d => d.total);
+    var lats = response.map(d => d.lat);
+    var longs = response.map(d => d.long);
 
     // // console.log(establishments);
     // // console.log(lats);
