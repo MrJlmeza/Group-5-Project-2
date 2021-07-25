@@ -108,6 +108,13 @@ def grubHubDash():
                                GrubHubDashboard.rating).all()
 
     grubHubDashboard_data = []
+    totalEarnings = 0
+    totalDeliveries = 0
+    establishmentList = []
+    totalEstablishments = 0
+    totalTips = 0
+
+
     for establishment, total, tip, grubhub, timepay, mileagepay, miles, bonus, streetname, city, zip, canceled, popup, type, lat, long, rating in results:
         data_dict = {}
         data_dict["establishment"] = establishment
@@ -130,33 +137,85 @@ def grubHubDash():
         grubHubDashboard_data.append(data_dict)
 
     return jsonify(grubHubDashboard_data)
+
+@app.route("/api/summarized")
+def getSummarizedData():
+    results = db.session.query(GrubHubDashboard.establishment, 
+                               GrubHubDashboard.total,
+                               GrubHubDashboard.tip,
+                               GrubHubDashboard.grubhub,
+                               GrubHubDashboard.timepay,
+                               GrubHubDashboard.mileagepay,
+                               GrubHubDashboard.miles,
+                               GrubHubDashboard.bonus,
+                               GrubHubDashboard.streetname,
+                               GrubHubDashboard.city,
+                               GrubHubDashboard.zip,
+                               GrubHubDashboard.canceled,
+                               GrubHubDashboard.popup,
+                               GrubHubDashboard.type,
+                               GrubHubDashboard.lat,
+                               GrubHubDashboard.long,
+                               GrubHubDashboard.rating).all()
     
     
-    # return jsonify(grubHubDashboardResults)
-    return grubHubDashboardResults
-    # results = db.session.query(GrubHubDashboard.establishment, GrubHubDashboard.lat, GrubHubDashboard.long).all()
+    totalEarnings = 0
+    totalDeliveries = 0
+    establishmentList = []
+    totalEstablishments = 0
+    totalTips = 0
+    finaljson = {}
 
-    # hover_text = [result[0] for result in results]
-    # lat = [result[1] for result in results]
-    # lon = [result[2] for result in results]
+    for result in results:
+        establishmentList.append(result.establishment)
+        totalDeliveries = totalDeliveries + 1
+        totalEarnings = totalEarnings + result.total
+        totalTips = totalTips + result.tip
 
-    # grubHub_data = [{
-    #     "type": "scattergeo",
-    #     "locationmode": "USA-states",
-    #     "lat": lat,
-    #     "lon": lon,
-    #     "text": hover_text,
-    #     "hoverinfo": "text",
-    #     "marker": {
-    #         "size": 15,
-    #         "line": {
-    #             "color": "rgb(8,8,8)",
-    #             "width": 1
-    #         },
-    #     }
-    # }]
+    mySet = set(establishmentList)
+    my_new_list = list(mySet)
+    totalEstablishments = len(my_new_list)
 
-    # return jsonify(grubHub_data)
+    finaljson["totalEarnings"] = round(totalEarnings, 2)
+    finaljson["totalDeliveries"] = totalDeliveries
+    finaljson["totalTips"] = round(totalTips, 2)
+    finaljson["totalEstablishments"] = totalEstablishments
+
+    return jsonify(finaljson)
+
+@app.route("/api/milessummarized")
+def getSummarizedMileageData():
+    results = db.session.query(GrubHubDashboard.establishment, 
+                               GrubHubDashboard.total,
+                               GrubHubDashboard.tip,
+                               GrubHubDashboard.grubhub,
+                               GrubHubDashboard.timepay,
+                               GrubHubDashboard.mileagepay,
+                               GrubHubDashboard.miles,
+                               GrubHubDashboard.bonus,
+                               GrubHubDashboard.streetname,
+                               GrubHubDashboard.city,
+                               GrubHubDashboard.zip,
+                               GrubHubDashboard.canceled,
+                               GrubHubDashboard.popup,
+                               GrubHubDashboard.type,
+                               GrubHubDashboard.lat,
+                               GrubHubDashboard.long,
+                               GrubHubDashboard.rating).all()
+    
+    
+    totalMiles = 0
+    totalMileagePay = 0
+    finaljson = {}
+
+    for result in results:
+        totalMiles = totalMiles + result.miles
+        totalMileagePay = totalMileagePay + result.mileagepay
+
+    finaljson["totalMiles"] = totalMiles
+    finaljson["totalMileagePay"] = round(totalMileagePay, 2)
+
+    return jsonify(finaljson)
 
 
 if __name__ == "__main__":

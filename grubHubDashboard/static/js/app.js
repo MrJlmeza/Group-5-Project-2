@@ -1,26 +1,41 @@
-function unpack(rows, index) {
-  return rows.map(function(row) {
-    return row[index];
+
+function buildSummarizedData() {
+  const url = "/api/summarized";
+  d3.json(url).then(function(response) {
+    console.log(response);
+    var totalEarningsDiv = document.getElementById('totalEarningsDiv');
+    totalEarningsDiv.innerHTML += response.totalEarnings;
+
+    var totalDeliveriesDiv = document.getElementById('totalDeliveriesDiv');
+    totalDeliveriesDiv.innerHTML += response.totalDeliveries;
+
+    var totalEstablishmentsDiv = document.getElementById('totalEstablishmentsDiv');
+    totalEstablishmentsDiv.innerHTML += response.totalEstablishments;
+
+    var totalTipsDiv = document.getElementById('totalTipsDiv');
+    totalTipsDiv.innerHTML += response.totalTips;
+
   });
+
 }
 
 function buildDashboards() {
-
+  
+  buildSummarizedData();
     /* get data route */
   const url = "/api/grubhHubDashboard";
   d3.json(url).then(function(response) {
 
     console.log(response);
     var establishments = response.map(d =>  d.establishment);
-    console.log(establishments);
-
     var earnings = response.map(d => d.total);
-
     var lats = response.map(d => d.lat);
     var longs = response.map(d => d.long);
-    console.log(lats);
-    console.log(longs);
-    console.log(earnings);
+
+    // console.log(establishments);
+    // console.log(lats);
+    // console.log(longs);
+    // console.log(earnings);
 
     var trace = {
       x: establishments,
@@ -37,7 +52,7 @@ function buildDashboards() {
     };
 
     // Plot the chart to a div tag with id "bar-plot"
-    Plotly.newPlot("establishmentsEarningsBar", data, layout);
+    Plotly.newPlot("establishmentsEarningsBar", data, layout, {responsive: true});
 
     ///  MAP   //////////////////////////////////////////////
     var map = L.map('EstablishmentsMap', {scrollWheelZoom:false}).setView([39.96366,-75.59671], 11);
