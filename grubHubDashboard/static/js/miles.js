@@ -15,7 +15,6 @@ function buildSummarizedData() {
 function buildMileageVsMilesCorrelation(){
   const url = "/api/milesmileagepay"; //change api call to the right one as needed
   d3.json(url).then(function(response) {
-    console.log(response);
 
     var milesList = [];
     var mileagepayList = [];
@@ -40,10 +39,22 @@ function buildMileageVsMilesCorrelation(){
     
     var layout = {
       xaxis: {
-        range: [ 0.5, 15 ]
+        range: [ 0.5, 15 ],
+        title: {
+          text: 'Miles',
+          font: {
+            size: 14,
+          }
+        },
       },
       yaxis: {
-        range: [0, 5]
+        range: [0, 5],
+        title: {
+          text: 'Mileage Pay (in U.S. Dollars)',
+          font: {
+            size: 14,
+          }
+        },
       }
     };
     

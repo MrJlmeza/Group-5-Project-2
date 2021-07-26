@@ -1,4 +1,4 @@
-﻿id,date,establishment,total,tip,grubhub,timePay,mileagePay,miles,bonus,acceptedAt,streetName,city,zip,canceled,popUp,type,lat,long,rating
+﻿id,date,establishment,total,tip,grubhub,timepay,mileagepay,miles,bonus,acceptedat,streetname,city,zip,canceled,popup,type,lat,long,rating
 1,7/2/2021,Shere E Punjab,11.14,3.18,7.96,3.55,2.53,11,1.88,11:31:00 AM,"""3319 301 Byers Dr #15""",Glen Mills,19342,0,0,Indian,39.88499,-75.52817,4
 2,7/4/2021,McDonald's,11.34,3.99,7.35,2.51,1.6,6.96,3.24,12:43:00 PM,1 Christy Dr,Concordville,19331,0,0,Fast Food,39.8822,-75.54521,1.5
 3,6/27/2021,Tsunami,11.83,5.43,6.4,3.58,1.82,7.91,1,4:22:00 PM,10 Market St,West Chester,19382,0,0,Asian,39.95963,-75.60473,4

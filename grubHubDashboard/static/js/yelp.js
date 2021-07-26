@@ -25,10 +25,22 @@ function buildYelpEarningsRatingsChart() {
     
     var layout = {
       xaxis: {
-        range: [ 0.5, 5.5 ]
+        range: [ 0.5, 5.5 ],
+        title: {
+          text: 'Yelp Ratings',
+          font: {
+            size: 14,
+          }
+        },
       },
       yaxis: {
-        range: [0, 600]
+        range: [0, 600],
+        title: {
+          text: 'Total Earnings (in U.S. Dollars)',
+          font: {
+            size: 14,
+          }
+        }
       }
     };
     
@@ -70,11 +82,23 @@ function buildYelpEarningsTypeChart(){
       },
       showlegend: false,
       xaxis: {
-        tickangle: -45
+        tickangle: -45,
+        title: {
+          text: 'Yelp Restaurant Type',
+          font: {
+            size: 14,
+          }
+        },
       },
       yaxis: {
         zeroline: false,
-        gridwidth: 2
+        gridwidth: 2,
+        title: {
+          text: 'Total Earnings (in U.S. Dollars)',
+          font: {
+            size: 14,
+          }
+        },
       },
       bargap :0.05
     };
