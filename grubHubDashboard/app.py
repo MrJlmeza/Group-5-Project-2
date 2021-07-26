@@ -247,5 +247,33 @@ def getyelpearningsratings():
 
     return jsonify(grubHubDashboard_data)
 
+@app.route("/api/yelpearningstypes")
+def getyelpearningstypes():
+    results = db.session.query(GrubHubDashboard.type, func.sum(GrubHubDashboard.total).label('totalSorted')).group_by(GrubHubDashboard.type).order_by(GrubHubDashboard.type).all()
+    
+    grubHubDashboard_data = [] 
+   
+    for type, total in results:
+        data_dict = {}
+        data_dict["type"] = type
+        data_dict["total"] = round(total, 2)
+        grubHubDashboard_data.append(data_dict)
+
+    return jsonify(grubHubDashboard_data)
+
+@app.route("/api/milesmileagepay")
+def getmilesmileagepay():
+    results = db.session.query(GrubHubDashboard.miles, GrubHubDashboard.mileagepay).all()
+    
+    grubHubDashboard_data = [] 
+   
+    for miles, mileagepay in results:
+        data_dict = {}
+        data_dict["miles"] = round(miles, 2)
+        data_dict["mileagepay"] = round(mileagepay, 2)
+        grubHubDashboard_data.append(data_dict)
+
+    return jsonify(grubHubDashboard_data)
+
 if __name__ == "__main__":
     app.run()

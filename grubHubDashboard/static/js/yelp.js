@@ -2,7 +2,7 @@
 function buildYelpEarningsRatingsChart() {
   const url = "/api/yelpearningsratings";
   d3.json(url).then(function(response) {
-    console.log(response);
+    // console.log(response);
 
     var earningsList = [];
     var ratingsList = [];
@@ -12,34 +12,24 @@ function buildYelpEarningsRatingsChart() {
       earningsList.push(response[i]["total"]);
     }
 
-    // var totalMilesDiv = document.getElementById('totalMilesDiv');
-    // totalMilesDiv.innerHTML += response.totalMiles;
-
-    // var totalMileagePayDiv = document.getElementById('totalMileagePayDiv');
-    // totalMileagePayDiv.innerHTML += response.totalMileagePay;
-
-    //scatter plot for Ratings vs. Earnings
-
     var trace1 = {
       x: ratingsList,
       y: earningsList,
       mode: 'markers',
       type: 'scatter',
       name: 'Team A',
-      text: earningsList,
-      marker: { size: 12 }
+      marker: { size: 12, color: 'rgb(211,35,35)' }
     };
     
     var data = [ trace1 ];
     
     var layout = {
       xaxis: {
-        range: [ 0, 5.5 ]
+        range: [ 0.5, 5.5 ]
       },
       yaxis: {
         range: [0, 600]
       }
-      // title:'Data Labels Hover'
     };
     
     Plotly.newPlot('EarningsRatingsDiv', data, layout, {responsive: true});
@@ -49,12 +39,49 @@ function buildYelpEarningsRatingsChart() {
 }
 
 function buildYelpEarningsTypeChart(){
-  // const url = "/api/milessummarized"; //change api call to the right one as needed
-  // d3.json(url).then(function(response) {
-  //   // console.log(response);
-    
+  const url = "/api/yelpearningstypes";
+  d3.json(url).then(function(response) {
+    // console.log(response);
 
-  // });
+    var earningsList = [];
+    var typesList = [];
+    // console.log(response);
+    for (var i = 0; i < response.length; i++) {
+      typesList.push(response[i]["type"]);
+      earningsList.push(response[i]["total"]);
+    }
+
+    var trace1 = {
+      x: typesList,
+      y: earningsList,
+      type: 'bar',
+      text: earningsList,
+      textposition: 'auto',
+      marker: {
+        color: 'rgb(211,35,35)'
+      }
+    };
+    
+    var data = [ trace1 ];
+    
+    var layout = {
+      font:{
+        family: 'Raleway, sans-serif'
+      },
+      showlegend: false,
+      xaxis: {
+        tickangle: -45
+      },
+      yaxis: {
+        zeroline: false,
+        gridwidth: 2
+      },
+      bargap :0.05
+    };
+    
+    Plotly.newPlot('EarningsTypeDiv', data, layout, {responsive: true});
+
+  });
 }
 
 
