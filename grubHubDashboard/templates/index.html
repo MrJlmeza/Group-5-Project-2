@@ -20,6 +20,7 @@
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
         <!-- Load main stylesheet-->
         <link href="../static/css/styles.css" rel="stylesheet" />
+        <link href="../static/css/style.css" rel="stylesheet" />
     </head>
     <body class="nav-fixed bg-light">
         <!-- Top app bar navigation menu-->
@@ -413,7 +414,7 @@
                                             <div id="DataSourcesDiv">
                                                 <ul class="list-group">
                                                     <a href="https://www.kaggle.com/yelp-dataset/yelp-dataset" class="list-group-item list-group-item-action" target="_blank">Yelp Dataset</a>
-                                                    <a href="https://docs.google.com/spreadsheets/d/1vv98p5LdSdRQ_XjL-kp1YfoRJjvXnOshDFMu7jNaf8Q/edit" class="list-group-item list-group-item-action" target="_blank">Vito's Grubhub Data</a>
+                                                    <a href="https://docs.google.com/spreadsheets/d/1wFUJCafax05pTMhTN5vEazQvMqyBZaIX6jGP8Z_v2G0/edit?usp=sharing" class="list-group-item list-group-item-action" target="_blank">Vito's Grubhub Data</a>
                                                   </ul>
                                             </div>
                                         </div>
@@ -5340,7 +5341,91 @@
                                 </div>
                             </div>
                         </div>
-
+                        
+                        <div id="viewTeamDiv">
+                          <div class="row gx-5">
+                            <div class="col-lg-3 mb-5">
+                              <div class="card card-raised h-100">
+                                <div class="card-header bg-transparent px-4">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="me-4">
+                                            <h2 class="card-title mb-0">Angela Leonard</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body p-4">
+                                    <div>
+                                        <!-- ADD PLOTLY CHART HERE-->
+                                    </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-lg-3 mb-5">
+                              <div class="card card-raised h-100">
+                                <div class="card-header bg-transparent px-4">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                      <div class="me-4">
+                                            <h2 class="card-title mb-0">Vito Jacano</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body p-4">
+                                  <div class="embed-responsive embed-responsive-16by9">
+                                    <img alt="Card image cap" class="card-img-top embed-responsive-item" src="../static/assets/Vito.jpg" />
+                                  </div>  
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-lg-3 mb-5">
+                              <div class="card card-raised h-100">
+                                <div class="card-header bg-transparent px-4">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="me-4">
+                                            <h2 class="card-title mb-0">Jorge Meza</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body p-4">
+                                    <div>
+                                        <!-- ADD PLOTLY CHART HERE-->
+                                    </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-lg-3 mb-5">
+                              <div class="card card-raised h-100">
+                                <div class="card-header bg-transparent px-4">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="me-4">
+                                            <h2 class="card-title mb-0">Brian Havard</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body p-4">
+                                    <div>
+                                        <!-- ADD PLOTLY CHART HERE-->
+                                    </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-lg-3 mb-5">
+                              <div class="card card-raised h-100">
+                                <div class="card-header bg-transparent px-4">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="me-4">
+                                            <h2 class="card-title mb-0">Tanmay Patel</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body p-4">
+                                  <div class="embed-responsive embed-responsive-16by9">
+                                    <img alt="Card image cap" class="card-img-top embed-responsive-item" src="../static/assets/Tanmay_sq.jpg" />
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                     </div>
                 </main>
                 <!-- Footer-->
@@ -5350,7 +5435,7 @@
                         <div class="d-flex flex-column flex-sm-row align-items-center justify-content-sm-between small">
                             <div class="me-sm-2">“Aim for simplicity in Data Science. Real creativity won’t make things more complex. Instead, it will simplify them.” - Damian Duffy Mingle</div>
                             <div class="d-flex ms-sm-2">
-                                <a class="text-decoration-none" href="#!">Copyright @ Squad 5</a>
+                                <a class="text-decoration-none" href="#" onclick="return showTeam();">Copyright @ Squad 5</a>
                             </div>
                         </div>
                     </div>

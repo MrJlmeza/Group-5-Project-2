@@ -17,6 +17,7 @@ function showMain(){
   hide(document.getElementById('analysisAndInsightsDiv'));
   hide(document.getElementById('yelpInsightsDiv'));
   hide(document.getElementById('viewDatasetDiv'));
+  hide(document.getElementById('viewTeamDiv'));
 }
 
 function showMilesAnalysis() {
@@ -25,6 +26,7 @@ function showMilesAnalysis() {
   hide(document.getElementById('analysisAndInsightsDiv'));
   hide(document.getElementById('yelpInsightsDiv'));
   hide(document.getElementById('viewDatasetDiv'));
+  hide(document.getElementById('viewTeamDiv'));
 }
 
 function showAnalysisAndInsights() {
@@ -33,6 +35,7 @@ function showAnalysisAndInsights() {
   show(document.getElementById('analysisAndInsightsDiv'));
   hide(document.getElementById('yelpInsightsDiv'));
   hide(document.getElementById('viewDatasetDiv'));
+  hide(document.getElementById('viewTeamDiv'));
 }
 
 function showYelpInsights() {
@@ -41,6 +44,7 @@ function showYelpInsights() {
   hide(document.getElementById('analysisAndInsightsDiv'));
   show(document.getElementById('yelpInsightsDiv'));
   hide(document.getElementById('viewDatasetDiv'));
+  hide(document.getElementById('viewTeamDiv'));
 }
 
 function showDataSet() {
@@ -49,8 +53,17 @@ function showDataSet() {
   hide(document.getElementById('analysisAndInsightsDiv'));
   hide(document.getElementById('yelpInsightsDiv'));
   show(document.getElementById('viewDatasetDiv'));
+  hide(document.getElementById('viewTeamDiv'));
 }
 
+function showTeam() {
+  hide(document.getElementById('mainDiv'));
+  hide(document.getElementById('mileageAnalysisDiv'));
+  hide(document.getElementById('analysisAndInsightsDiv'));
+  hide(document.getElementById('yelpInsightsDiv'));
+  hide(document.getElementById('viewDatasetDiv'));
+  show(document.getElementById('viewTeamDiv'));
+}
 
 function buildSummarizedData() {
   const url = "/api/summarized";
