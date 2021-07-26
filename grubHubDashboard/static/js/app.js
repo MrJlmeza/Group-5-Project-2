@@ -136,11 +136,23 @@ function buildBarChart() {
       },
       showlegend: false,
       xaxis: {
-        tickangle: -45
+        tickangle: -45,
+        title: {
+          text: 'Establishment',
+          font: {
+            size: 14,
+          }
+        }
       },
       yaxis: {
         zeroline: false,
-        gridwidth: 2
+        gridwidth: 2,
+        title: {
+          text: 'Total Earnings (in U.S. Dollars)',
+          font: {
+            size: 14,
+          }
+        }
       },
       bargap :0.05
     };
@@ -151,96 +163,60 @@ function buildBarChart() {
 
 }
 
+function buildMap() {
+  var myMap = L.map("EstablishmentsMapDiv", {
+    center: [39.96366, -75.59671],
+    zoom: 11
+  });
+
+  // Adding tile layer to the map
+  L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
+    attribution: "© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>",
+    // id: "mapbox/streets-v11",
+    // accessToken: API_KEY
+  }).addTo(myMap);
+
+  // Assemble API query URL
+  var url = "/api/establishmentmap";
+
+  // Grab the data with d3
+  d3.json(url).then(function(response) {
+    console.log(response);
+
+    // Loop through data
+    for (var i = 0; i < response.length; i++) {
+      // L.circleMarker([response[i]["lat"], response[i]["long"]], {
+      //   fillOpacity: 0.75,
+      //   color: "white",
+      //   fillColor: "purple",
+      //   // Setting our circle's radius equal to the output of our markerSize function
+      //   // This will make our marker's size proportionate to its population
+      //   radius: 5
+      // }).bindPopup("<h1>" + response[i]["establishment"] + "</h1>").addTo(myMap);
+
+      // markers.addLayer(L.marker([response[i]["lat"], response[i]["long"]])
+      // .bindPopup(response[i]["establishment"]));
+      var marker = L.marker([response[i].lat, row.long], {
+        opacity: 1
+      }).bindPopup(response[i].establishment);
+    }
+
+    // Add our marker cluster layer to the map
+    // myMap.addLayer(markers);
+    
+    marker.addTo(map);
+    
+  });
+}
+
 function buildDashboards() {
   
   buildSummarizedData();
   buildBarChart();
-    /* get data route */
-  const url = "/api/grubhHubDashboard";
-  d3.json(url).then(function(response) {
-
-    // console.log(response);
-    var establishments = response.map(d =>  d.establishment);
-    var earnings = response.map(d => d.total);
-    var lats = response.map(d => d.lat);
-    var longs = response.map(d => d.long);
-
-    // // console.log(establishments);
-    // // console.log(lats);
-    // // console.log(longs);
-    // // console.log(earnings);
-
-    // var trace = {
-    //   x: establishments,
-    //   y: earnings,
-    //   type: "bar"
-    // };
-    // // Create the data array for our plot
-    // var data = [trace];
-
-    // // Define the plot layout
-    // var layout = {
-    //   xaxis: { title: "Establishments" },
-    //   yaxis: { title: "Total Earned"}
-    // };
-
-    // // Plot the chart to a div tag with id "bar-plot"
-    // Plotly.newPlot("establishmentsEarningsBar", data, layout, {responsive: true});
-
-    ///  MAP   //////////////////////////////////////////////
-    var map = L.map('EstablishmentsMap', {scrollWheelZoom:false}).setView([39.96366,-75.59671], 11);
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-    /* Control panel to display map layers */
-    var controlLayers = L.control.layers( null, null, {
-    position: "topright",
-    collapsed: false
-    }).addTo(map);
-
-    // display Carto basemap tiles with light features and labels
-    var light = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attribution">CARTO</a>'
-    }).addTo(map);
-
-    controlLayers.addBaseLayer(light, 'Carto Light basemap');
-
-    // Terrain tiles
-    var terrain = L.tileLayer('https://stamen-tiles.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png', {
-    attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.'
-    }); // EDIT - insert or remove ".addTo(map)" before last semicolon to display by default
-    controlLayers.addBaseLayer(terrain, 'Stamen Terrain basemap');
-
-    // Read markers data from data.csv
-    //   d3.csv('../newghUTF8.csv').then (function(csvString) {
-    //       console.log (csvString)
-
-    //   // Add markers
-    //   for (var i in csvString) {
-    //     var row = csvString[i];
-
-    //     var marker = L.marker([row.lat, row.long], {
-    //       opacity: 1
-    //     }).bindPopup(row.establishment);
-        
-    //     marker.addTo(EstablishmentsMap);
-    //   }
-
-    // });
-    for (var i = 0; i < establishments.length; i++) {
-      var lat = lats[i];
-      var long = longs[i];
-      var marker = L.marker([lat, long], {
-        opacity: 1
-      }).bindPopup(establishments[i]);
-
-      marker.addTo(map);
-    }
+  //buildMap();
+  
       
-  }
-)};
+}
 
 showMain();
 buildDashboards();

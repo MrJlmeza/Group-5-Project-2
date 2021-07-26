@@ -275,5 +275,20 @@ def getmilesmileagepay():
 
     return jsonify(grubHubDashboard_data)
 
+@app.route("/api/establishmentmap")
+def getestablishmentmap():
+    results = db.session.query(GrubHubDashboard.establishment, GrubHubDashboard.lat, GrubHubDashboard.long).all()
+    
+    grubHubDashboard_data = [] 
+   
+    for establishment, lat, long in results:
+        data_dict = {}
+        data_dict["establishment"] = establishment
+        data_dict["lat"] = lat
+        data_dict["long"] = long
+        grubHubDashboard_data.append(data_dict)
+
+    return jsonify(grubHubDashboard_data)
+
 if __name__ == "__main__":
     app.run()

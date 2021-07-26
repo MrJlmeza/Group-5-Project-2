@@ -18,6 +18,16 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500" rel="stylesheet" />
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+        
+        <!-- Leaflet CSS -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
+        integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+        crossorigin=""/>
+
+        <!-- Marker Cluster CSS -->
+        <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.0.3/dist/MarkerCluster.css">
+        <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.0.3/dist/MarkerCluster.Default.css">
+
         <!-- Load main stylesheet-->
         <link href="../static/css/styles.css" rel="stylesheet" />
         <link href="../static/css/style.css" rel="stylesheet" />
@@ -235,24 +245,19 @@
                                 </div>
                             </div>
                             
+                            
+
                             <div class="row gx-5">
-                                <!-- Charts for MAP-->
-                                <div class="col-lg-12 mb-5">
-                                    <div class="card card-raised h-100">
-                                        <div class="card-header bg-transparent px-4">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <div class="me-4">
-                                                    <h2 class="card-title mb-0">Establishments Map</h2>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card-body p-4">
-                                            <div id="EstablishmentsMap">
-                                                <!-- ADD MAP HERE-->
-                                            </div>
-                                        </div>
-                                    </div>
+                              <div class="col-lg-6 mb-5">
+                                <div class="embed-responsive embed-responsive-16by9">
+                                  <img alt="Card image cap" class="card-img-top embed-responsive-item" src="../static/assets/wordcloud.png" />
                                 </div>
+                              </div>
+                              <div class="col-lg-6 mb-5">
+                                <div class="embed-responsive embed-responsive-16by9">
+                                  <img alt="Card image cap" class="card-img-top embed-responsive-item" src="../static/assets/wordcloud.png" />
+                                </div>
+                              </div>
                             </div>
                         </div>
                         <!-- ///// MILEAGE VISUALIZATION ////////////////////////////////////////////////////////////////////// -->
@@ -324,12 +329,14 @@
                                             </div>
                                         </div>
                                         <div class="card-body p-4">
-                                            <div id="EarningsTypeChart">
-                                                <!-- Add analysis here - will be a paragraph of our findings-->
-                                            </div>
+                                          <div class="embed-responsive embed-responsive-16by9">
+                                            <img alt="Card image cap" class="card-img-top embed-responsive-item" src="../static/assets/MilesMileagePayCorrelation.png" />
+                                          </div> 
+
                                         </div>
                                         <div class="card-footer bg-transparent position-relative ripple-gray">
-                                            
+                                            There is a strong correlation between Miles and Mileage Pay.
+                                            However, one should factor in gas prices. Is it truly worth driving long distances if gas prices continue to climb?
                                         </div>
                                     </div>
                                 </div>
@@ -338,16 +345,99 @@
 
                         <!-- ///// ANALYSIS & INSIGHTS DIV ////////////////////////////////////////////////////////////////////// -->
                         <div id="analysisAndInsightsDiv">
-                            <!-- Vito-->
-                            <!-- Vito-->
-                            <!-- Vito-->
-                            <!-- Vito-->
-                            <!-- Vito-->
-                            <!-- Vito-->
-                            <!-- Vito-->
                             <div id="analysis">
-                                Add analysis here
-                            </div>
+                              <div class="row gx-5">
+                                <div class="col-lg-12 mb-5">
+                                  <div class="card card-raised h-100">
+                                      <div class="card-header bg-transparent px-4">
+                                          <div class="d-flex justify-content-between align-items-center">
+                                              <div class="me-4">
+                                                  <h2 class="card-title mb-0">Miles vs. Rating Correlation</h2>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="card-body p-4">
+                                        <div class="embed-responsive embed-responsive-16by9">
+                                          <img alt="Card image cap" class="card-img-top embed-responsive-item" src="../static/assets/MilesRatingCorrelation.png" />
+                                        </div> 
+                                      </div>
+                                      <div class="card-footer bg-transparent position-relative ripple-gray">
+                                          Do people place orders for further deliveries when restaurants are more highly rated?
+                                          The correlation coefficient established shows us that people may find restaurants that are very highly rated that are farther away. However they wil not necessarily order.
+                                      </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="row gx-5">
+                                <div class="col-lg-12 mb-5">
+                                  <div class="card card-raised h-100">
+                                      <div class="card-header bg-transparent px-4">
+                                          <div class="d-flex justify-content-between align-items-center">
+                                              <div class="me-4">
+                                                  <h2 class="card-title mb-0">Tip vs. Total Earned Correlation</h2>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="card-body p-4">
+                                        <div class="embed-responsive embed-responsive-16by9">
+                                          <img alt="Card image cap" class="card-img-top embed-responsive-item" src="../static/assets/TipsTotalCorrelation.png" />
+                                        </div> 
+                                      </div>
+                                      <div class="card-footer bg-transparent position-relative ripple-gray">
+                                          Tips are imporant! Strong correlation supports our theory (duh!) 
+                                      </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="row gx-5">
+                                <div class="col-lg-12 mb-5">
+                                  <div class="card card-raised h-100">
+                                      <div class="card-header bg-transparent px-4">
+                                          <div class="d-flex justify-content-between align-items-center">
+                                              <div class="me-4">
+                                                  <h2 class="card-title mb-0">Tip vs. Rating Correlation</h2>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="card-body p-4">
+                                        <div class="embed-responsive embed-responsive-16by9">
+                                          <img alt="Card image cap" class="card-img-top embed-responsive-item" src="../static/assets/TipRatingCorrelation.png" />
+                                        </div> 
+                                      </div>
+                                      <div class="card-footer bg-transparent position-relative ripple-gray">
+                                          Do people tip more when restaurants are rated more highly?
+                                          No. No correlation exists between ratings and tips. We found more good tips for 2 star restaurants than 5 star restaurants.
+                                      </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="row gx-5">
+                                <div class="col-lg-12 mb-5">
+                                  <div class="card card-raised h-100">
+                                      <div class="card-header bg-transparent px-4">
+                                          <div class="d-flex justify-content-between align-items-center">
+                                              <div class="me-4">
+                                                  <h2 class="card-title mb-0">Miles vs. Total Earned Correlation</h2>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="card-body p-4">
+                                        <div class="embed-responsive embed-responsive-16by9">
+                                          <img alt="Card image cap" class="card-img-top embed-responsive-item" src="../static/assets/TotalMilesCorrelation.png" />
+                                        </div> 
+                                      </div>
+                                      <div class="card-footer bg-transparent position-relative ripple-gray">
+                                          Do we earn more when driving farther to deliver orders?
+                                          Not necessarily. There are other factors that may earn higher pay. Sometimes more folks tip higher for quicker deliveries.
+                                      </div>
+                                  </div>
+                                </div>
+                              </div>
+                                
+                            </div> 
                         </div>
                         
                         <!-- ///// YELP DIV ////////////////////////////////////////////////////////////////////// -->
@@ -359,7 +449,7 @@
                                         <div class="card-header bg-transparent px-4">
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <div class="me-4">
-                                                    <h2 class="card-title mb-0">Total Earnings vs. Ratings</h2>
+                                                    <h2 class="card-title mb-0">Total Earnings vs. Yelp Ratings</h2>
                                                 </div>
                                             </div>
                                         </div>
@@ -381,7 +471,7 @@
                                         <div class="card-header bg-transparent px-4">
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <div class="me-4">
-                                                    <h2 class="card-title mb-0">Total Earnings vs. Type</h2>
+                                                    <h2 class="card-title mb-0">Total Earnings vs. Yelp Restaurant Type</h2>
                                                 </div>
                                             </div>
                                         </div>
@@ -5450,9 +5540,18 @@
         <!-- <script src="{{ url_for('static', filename='js/app.js') }}"></script> -->
 
         <!-- ///////////////////////////////////////////////////// -->
+        
+        <!-- Leaflet JS -->
+        <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
+        integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
+        crossorigin=""></script>
+        <!-- Marker Cluster JS -->
+        <script type="text/javascript" src="https://unpkg.com/leaflet.markercluster@1.0.3/dist/leaflet.markercluster.js"></script>
+
         <!-- ///////////////////////////////////////////////////// -->
 
         <!-- Local Scripts to Power our Charts -->
+        <script src="../static/js/config.js"></script>
         <script src="../static/js/app.js"></script>
         <script src="../static/js/miles.js"></script>
         <script src="../static/js/yelp.js"></script>
@@ -5469,7 +5568,8 @@
         <!-- Load Plotly-->
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
-        <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+
         
+
     </body>
 </html>
