@@ -177,7 +177,7 @@ def getSummarizedData():
     totalEstablishments = len(my_new_list)
 
     finaljson["totalEarnings"] = round(totalEarnings, 2)
-    finaljson["totalDeDliveries"] = totaleliveries
+    finaljson["totalDeliveries"] = totalDeliveries
     finaljson["totalTips"] = round(totalTips, 2)
     finaljson["totalEstablishments"] = totalEstablishments
     finaljson["typeCount"] = typeCount
