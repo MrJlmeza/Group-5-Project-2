@@ -2,7 +2,7 @@
 function buildYelpEarningsRatingsChart() {
   const url = "/api/yelpearningsratings";
   d3.json(url).then(function(response) {
-    console.log(response);
+    // console.log(response);
 
     var earningsList = [];
     var ratingsList = [];
@@ -41,7 +41,7 @@ function buildYelpEarningsRatingsChart() {
 function buildYelpEarningsTypeChart(){
   const url = "/api/yelpearningstypes";
   d3.json(url).then(function(response) {
-    console.log(response);
+    // console.log(response);
 
     var earningsList = [];
     var typesList = [];
